@@ -2,9 +2,8 @@
 import { apiKey } from '../extras/keys'; 
 import axios from 'axios';
 
-// Enter your API key from openweathermap.org !
+// Assign your API key from openweathermap.org to "API_KEY" object !
 const API_KEY = apiKey;
-console.log(API_KEY);
 
 const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
 
@@ -12,7 +11,9 @@ export const FETCH_WEATHER = 'FETCH_WEATHER';
 
 export function fetchWeather(city) {
     const url = `${ROOT_URL}&q=${city}&units=metric`;
-    const request = axios.get(url);
+    const request = axios.get(url); // Returns promise
+
+    console.log('Request:', request);
 
     return {
         type: FETCH_WEATHER,
